@@ -1,0 +1,29 @@
+mkdir
+touch
+rm
+cp
+mv
+rmdir
+chmod: give permissions to files
+find . -type f
+nano
+cat
+grep -ic "i" file.txt
+echo 
+ping
+sudo
+export: set env vars
+curl
+ifconfig
+netstat
+whoami
+man man
+uname
+head, tail: first or last few lines: head -n 2 file.txt
+date
+service
+su
+hostname
+uptime
+apt
+ps

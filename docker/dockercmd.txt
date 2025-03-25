@@ -1,0 +1,63 @@
+docker pull ubuntu
+docker run -it ubuntu bash, -d
+docker stop container
+docker start container
+docker rm containerid
+docker container prune #remove all stopped containers 
+docker rmi image
+docker logs container
+docker built -t myapp .
+
+
+
+
+ON AWS:
+sudo apt update
+sudo apt install -y docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+
+
+
+Dockerfile node.js
+
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 10000
+CMD ["node", "server.js"]
+
+Build:
+
+npm init -y
+npm install express
+docker build -t <app_name> .
+docker run -p 10000:10000 <app_name>
+curl http://localhost:10000
+
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+
+
+Dockerfile for go:
+
+create main.go
+go mod init <dir_name>
+go mod tidy
+
+
+FROM golang:1.21-alpine AS builder
+WORKDIR /app
+COPY go.mod ./
+RUN go mod download
+COPY . .
+
+RUN go build -o main .
+FROM alpine:latest
+WORKDIR /root/
+COPY --from=builder /app/main .
+EXPOSE 10000
+CMD ["./main"]
+

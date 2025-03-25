@@ -1,0 +1,10 @@
+aws configure
+
+aws dynamodb put-item --table-name testTable --item "{\"username\": {\"S\": \"Aditya123\"}, \"roll\": {\"S\": \"2022BCD0035\"}}"
+
+aws dynamodb scan --table-name testTable
+
+aws dynamodb get-item --table-name testTable --key "{\"username\": {\"S\": \"Aditya123\"}}"
+
+
+aws dynamodb delete-item --table-name testTable --key "{\"username\": {\"S\": \"Aditya123\"}}"

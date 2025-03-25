@@ -1,0 +1,79 @@
+### **Task 1: Develop a Cloud Database Using AWS DynamoDB**  
+
+**Aim:**  
+To create a cloud-based NoSQL database using AWS DynamoDB with a table named after your name, storing and managing data efficiently.  
+
+### **Theory:**  
+AWS DynamoDB is a fully managed NoSQL database service that provides fast and scalable performance. It supports key-value and document data models. Features include:  
+- **Managed Service:** No need for server provisioning.  
+- **High Availability:** Automatically replicates data across multiple regions.  
+- **Scalability:** Handles large amounts of data efficiently.  
+- **Querying Support:** Provides flexible querying through partition keys, sort keys, and indexes.  
+
+### **Program (Key Points to Cover):**  
+
+#### **Step 1: Set Up DynamoDB on AWS**  
+- Log in to AWS Management Console.  
+- Open **DynamoDB** from AWS services.  
+- Click **Create Table** and enter:  
+  - **Table Name:** (Your Name)  
+  - **Partition Key:** (e.g., `ID`, `UserID`)  
+  - **Sort Key (Optional):** (e.g., `Timestamp`)  
+- Set the read/write capacity (On-Demand or Provisioned Mode).  
+- Enable encryption and auto-scaling if needed.  
+- Click **Create Table** and wait for it to be ready.  
+
+### **Expected Outcome:**  
+- A functional DynamoDB table created with your name.  
+- Ability to store and retrieve NoSQL data using AWS services.  
+
+---  
+
+### **Task 2: Query the Database from Your Local Machine Using AWS CLI**  
+
+**Aim:**  
+To connect to AWS DynamoDB from a local machine using AWS CLI and perform data queries.  
+
+### **Theory:**  
+AWS CLI (Command Line Interface) allows users to interact with AWS services directly from a terminal. It provides commands to query, insert, and delete data from DynamoDB.  
+
+### **Program (Key Points to Cover):**  
+
+#### **Step 1: Install and Configure AWS CLI**  
+- Install AWS CLI (`awscli`) on your local machine.  
+- Configure credentials using:  
+  ```bash
+  aws configure
+  ```
+  (Enter **AWS Access Key, Secret Key, Region**, and **Output Format**).  
+
+#### **Step 2: Insert Data into DynamoDB**  
+- Add an item to the DynamoDB table:  
+  ```bash
+  aws dynamodb put-item \
+    --table-name YourName \
+    --item '{"ID": {"S": "1"}, "Name": {"S": "John"}, "Age": {"N": "25"}}' \
+    --region us-east-1
+  ```
+
+#### **Step 3: Query the Database**  
+- Retrieve an item using its primary key:  
+  ```bash
+  aws dynamodb get-item \
+    --table-name YourName \
+    --key '{"ID": {"S": "1"}}' \
+    --region us-east-1
+  ```
+
+#### **Step 4: List All Items in the Table**  
+- Scan the entire table:  
+  ```bash
+  aws dynamodb scan --table-name YourName --region us-east-1
+  ```
+
+### **Expected Outcome:**  
+- Successful execution of AWS CLI commands to query the DynamoDB table.  
+- Data retrieval from DynamoDB on a local machine.  
+- Understanding of how AWS CLI interacts with DynamoDB.  
+
+Let me know if you need any modifications! 🚀

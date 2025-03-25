@@ -1,0 +1,31 @@
+### **Task 1: Networking with VirtualBox - Explore Bridge, NAT**  
+
+**Aim:**  
+To explore and understand the networking modes in VirtualBox, specifically **Bridged Networking** and **NAT (Network Address Translation)**, and how they affect virtual machine (VM) connectivity.  
+
+### **Theory:**  
+VirtualBox provides multiple networking modes to connect virtual machines to a network. Two commonly used modes are:  
+
+1. **Bridged Networking:**  
+   - The VM gets an IP address from the same network as the host machine.  
+   - The VM behaves like a physical machine on the network.  
+   - Can directly communicate with other devices in the network.  
+
+2. **NAT (Network Address Translation):**  
+   - The VM is assigned a private IP and shares the host's IP for external communication.  
+   - Best for internet access without exposing the VM to the local network.  
+   - No direct access to the VM from the network unless port forwarding is configured.  
+
+### **Program (Key Points to Cover):**  
+- Open VirtualBox and navigate to VM **Settings → Network**.  
+- Select **Bridged Adapter** and test connectivity (check IP, ping, access LAN).  
+- Select **NAT** and verify internet access.  
+- Compare network behavior in both modes.  
+- Use commands like `ip a`, `ifconfig`, `ping`, and `traceroute` inside the VM to observe changes.  
+
+### **Expected Outcome:**  
+- Understanding of how Bridged and NAT modes work in VirtualBox.  
+- Ability to configure and test network settings for VMs.  
+- Practical knowledge of how different networking modes affect communication and connectivity.  
+
+Let me know if you need further details! 🚀

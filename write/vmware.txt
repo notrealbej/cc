@@ -1,0 +1,44 @@
+### **Task: Exploring VMware vSphere and Performing Live Migration**  
+
+**Aim:**  
+To explore VMware vSphere by logging into the vSphere server, viewing the data cluster and attached VMs, cloning a VM, and using vMotion to perform live migration of the VM to another host.  
+
+### **Theory:**  
+VMware vSphere is an enterprise-level virtualization platform that provides centralized management of virtualized infrastructure. Key components include:  
+- **ESXi Hosts:** The physical servers running virtual machines.  
+- **vCenter Server:** The centralized management platform for ESXi hosts and VMs.  
+- **Clusters:** Groups of hosts that share resources for high availability.  
+- **vMotion:** A feature that enables live migration of running VMs between hosts with minimal downtime.  
+
+### **Program (Key Points to Cover):**  
+
+#### **Step 1: Log in to VMware vSphere Server**  
+- Access the vSphere Web Client using the provided credentials.  
+- Navigate to **Hosts and Clusters** to view the data cluster.  
+- Check the number of virtual machines attached to hosts.  
+
+#### **Step 2: Clone a VM with Your Name**  
+- Select an existing VM running on **Host A**.  
+- Right-click → **Clone** → **Clone to Virtual Machine**.  
+- Name the cloned VM as per your requirement.  
+- Choose storage, network settings, and finalize cloning.  
+
+#### **Step 3: Use vMotion to Migrate the VM to Another Host**  
+- Ensure that **vMotion** is enabled on both source and destination hosts.  
+- Right-click the VM → **Migrate**.  
+- Choose **Change compute resource only** (Live migration).  
+- Select the destination host.  
+- Monitor the migration process in **Recent Tasks**.  
+
+#### **Step 4: Run the Migrated VM on the New Host**  
+- Verify that the VM has successfully moved to the new host.  
+- Check network connectivity and resource allocation.  
+- Ensure the VM remains operational post-migration.  
+
+### **Expected Outcome:**  
+- Successful login to vSphere and visualization of the data cluster.  
+- Cloning of a VM on **Host A** with a custom name.  
+- Live migration of the VM to another host using vMotion.  
+- Confirmation that the migrated VM runs smoothly on the new host.  
+
+Let me know if you need modifications! 🚀

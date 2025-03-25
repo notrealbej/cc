@@ -1,0 +1,20 @@
+### **Task 1: Identify 30 Linux Commands**  
+
+**Aim:**  
+To learn and understand the functionality of 30 commonly used Linux commands for file management, process control, networking, and system administration.  
+
+### **Theory:**  
+Linux is a command-line-based operating system that allows users to perform various operations using terminal commands. These commands help in managing files, processes, users, and networks efficiently. Commands are executed in a shell like Bash or Zsh.  
+
+### **Program (Key Points to Cover):**  
+- Identify 30 essential Linux commands.  
+- Categorize them based on their usage (file handling, process management, network, etc.).  
+- Practice using each command with different options and arguments.  
+- Observe the output and functionality of each command.  
+
+### **Expected Outcome:**  
+- Understanding of 30 Linux commands and their usage.  
+- Ability to execute basic operations in Linux using the command line.  
+- Improved efficiency in managing files, processes, and networks through CLI commands.  
+
+Let me know if you need a list of 30 commands! 🚀

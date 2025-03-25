@@ -1,0 +1,66 @@
+### **Task 1: Explore Golang Features**  
+
+**Aim:**  
+To explore the key features of the Go programming language, including its simplicity, concurrency model, and performance benefits.  
+
+### **Theory:**  
+Go (Golang) is an open-source, statically typed, compiled language designed by Google. It emphasizes simplicity, efficiency, and concurrency. Some key features include:  
+- Statically typed with type inference.  
+- Garbage collection for memory management.  
+- Concurrency with goroutines and channels.  
+- High performance due to compiled execution.  
+- Built-in support for networking and web services.  
+
+### **Program (Key Points to Cover):**  
+- Install Go and set up the environment.  
+- Explore basic syntax (variables, loops, functions, structs).  
+- Understand Go’s standard library and package system.  
+
+### **Expected Outcome:**  
+- Understanding of Go’s key features and benefits.  
+- Familiarity with basic syntax and structure.  
+- Ability to write simple Go programs.  
+
+---  
+
+### **Task 2: Write a Hello-World Service Using Golang**  
+
+**Aim:**  
+To create a simple HTTP service in Go that returns "Hello, World!" when accessed.  
+
+### **Theory:**  
+Go is widely used for building web services due to its built-in `net/http` package. A basic web server in Go listens on a port and serves HTTP requests efficiently.  
+
+### **Program (Key Points to Cover):**  
+- Import the `net/http` package.  
+- Define an HTTP handler function.  
+- Start a web server on a specific port.  
+- Run and test the service using a web browser or `curl`.  
+
+### **Expected Outcome:**  
+- A functional HTTP server in Go.  
+- The ability to send and receive HTTP requests.  
+- Successful display of "Hello, World!" on accessing the endpoint.  
+
+---  
+
+### **Task 3: Explore Goroutines Using One Program**  
+
+**Aim:**  
+To understand and implement Goroutines in Go for concurrent execution.  
+
+### **Theory:**  
+Goroutines are lightweight threads managed by Go’s runtime. They allow multiple tasks to run concurrently without the complexity of traditional threading. Goroutines use channels for safe communication.  
+
+### **Program (Key Points to Cover):**  
+- Create a function to be executed as a Goroutine.  
+- Use the `go` keyword to start a Goroutine.  
+- Implement multiple Goroutines running in parallel.  
+- Synchronize them using channels or `sync.WaitGroup`.  
+
+### **Expected Outcome:**  
+- Execution of multiple Goroutines concurrently.  
+- Understanding of Go’s concurrency model.  
+- Efficient task execution without blocking the main thread.  
+
+Let me know if you need any modifications! 🚀

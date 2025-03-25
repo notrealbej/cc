@@ -1,0 +1,55 @@
+### **Task 1: Exploring Docker Commands and Running Containers on AWS EC2**  
+
+**Aim:**  
+To install Docker on an AWS EC2 instance, explore at least 8 essential Docker commands, run Node.js and Golang-based containers, manage running containers, and upload an image to Docker Hub.  
+
+### **Theory:**  
+Docker is a platform that allows developers to build, deploy, and manage containerized applications. Containers are lightweight, portable, and ensure consistency across different environments. In this task, we will:  
+1. Install Docker on an AWS EC2 instance.  
+2. Explore essential Docker commands for container management.  
+3. Run Node.js and Golang-based services inside Docker containers.  
+4. Manage and remove containers and images.  
+5. Push an image to Docker Hub.  
+
+### **Program (Key Points to Cover):**  
+
+#### **Step 1: Install Docker on AWS EC2**  
+- Connect to the EC2 instance using SSH.  
+- Install Docker using the package manager (`apt` for Ubuntu, `yum` for Amazon Linux).  
+- Start and enable the Docker service.  
+- Verify installation with `docker --version`.  
+
+#### **Step 2: Explore 8 Essential Docker Commands**  
+- `docker pull <image>` → Download a Docker image.  
+- `docker run -d -p <host_port>:<container_port> <image>` → Run a container in detached mode.  
+- `docker ps` → List running containers.  
+- `docker stop <container_id>` → Stop a running container.  
+- `docker rm <container_id>` → Remove a container.  
+- `docker images` → List all downloaded images.  
+- `docker rmi <image_id>` → Remove an image.  
+- `docker logs <container_id>` → View container logs.  
+
+#### **Step 3: Run Node.js and Golang Hello-World Containers**  
+- Pull Node.js and Golang images (`docker pull node` and `docker pull golang`).  
+- Create a simple **Hello-World** service for both languages.  
+- Build and run the containers on different ports.  
+
+#### **Step 4: Manage Running Containers and Remove Images**  
+- Use `docker ps -a` to list all containers.  
+- Stop and remove running containers using `docker stop` and `docker rm`.  
+- Remove all images using `docker rmi $(docker images -q)`.  
+
+#### **Step 5: Create a Docker Hub Repository and Push an Image**  
+- Create an account on [Docker Hub](https://hub.docker.com/).  
+- Log in to Docker from the terminal using `docker login`.  
+- Tag the image using your roll number (`docker tag <image_id> <dockerhub_username>/<repo_name>:<rollnumber>`).  
+- Push the image to Docker Hub using `docker push <dockerhub_username>/<repo_name>:<rollnumber>`.  
+
+### **Expected Outcome:**  
+- Docker installed successfully on AWS EC2.  
+- Ability to execute essential Docker commands.  
+- Running Node.js and Golang containers serving Hello-World responses.  
+- Listing and managing running containers.  
+- Successfully pushing an image to Docker Hub with a custom tag.  
+
+Let me know if you need modifications! 🚀

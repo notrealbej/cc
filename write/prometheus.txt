@@ -1,0 +1,194 @@
+## **Task 1: Install Prometheus and Identify Performance Metrics of Pods in Minikube**  
+
+### **Aim:**  
+To install Prometheus on a Minikube Kubernetes cluster and monitor the performance metrics of running pods and containers.  
+
+### **Theory:**  
+Prometheus is an open-source monitoring tool designed for Kubernetes. It collects real-time metrics and stores them in a time-series database for analysis. Key features include:  
+- **Time-Series Data Collection:** Stores metrics as key-value pairs.  
+- **Pull-Based Monitoring:** Scrapes data from targets.  
+- **Kubernetes Integration:** Collects pod and node performance data.  
+
+### **Program (Key Points to Cover):**  
+
+#### **Step 1: Install Minikube and Start Cluster**  
+- Install Minikube (`brew install minikube` for macOS or `choco install minikube` for Windows).  
+- Start Minikube:  
+  ```bash
+  minikube start
+  ```
+
+#### **Step 2: Deploy Prometheus on Minikube**  
+- Create a new namespace for monitoring:  
+  ```bash
+  kubectl create namespace monitoring
+  ```
+- Deploy Prometheus using Helm:  
+  ```bash
+  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  helm repo update
+  helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring
+  ```
+
+#### **Step 3: Access Prometheus Dashboard**  
+- Port forward the Prometheus service:  
+  ```bash
+  kubectl port-forward svc/prometheus-kube-prometheus-prometheus -n monitoring 9090:9090
+  ```
+- Open `http://localhost:9090` in a browser.  
+
+#### **Step 4: Identify Performance Metrics of Running Pods/Containers**  
+- List running pods:  
+  ```bash
+  kubectl get pods -n monitoring
+  ```
+- Query Prometheus for pod metrics:  
+  - `kube_pod_container_resource_requests_cpu_cores` → CPU usage.  
+  - `kube_pod_container_resource_requests_memory_bytes` → Memory usage.  
+  - `container_cpu_usage_seconds_total` → CPU time.  
+  - `container_memory_usage_bytes` → Memory consumption.  
+
+### **Expected Outcome:**  
+- Prometheus installed and running on Minikube.  
+- Access to real-time metrics of Kubernetes pods and containers.  
+- Analysis of CPU, memory, and resource usage.  
+
+---
+
+## **Task 2: Install MongoDB and Create a Service in Go or Node.js**  
+
+### **Aim:**  
+To install MongoDB locally, develop a service using **Go or Node.js**, connect to MongoDB, and insert a document into the database.  
+
+### **Theory:**  
+MongoDB is a NoSQL database that stores data in flexible, JSON-like documents. Node.js and Go provide drivers to interact with MongoDB and perform CRUD operations.  
+
+### **Program (Key Points to Cover):**  
+
+#### **Step 1: Install MongoDB on Local Machine**  
+- Install MongoDB on **Ubuntu**:  
+  ```bash
+  sudo apt update
+  sudo apt install -y mongodb
+  sudo systemctl start mongodb
+  sudo systemctl enable mongodb
+  ```
+- Verify installation:  
+  ```bash
+  mongo --eval 'db.runCommand({ connectionStatus: 1 })'
+  ```
+
+#### **Step 2: Create a Service Using Go or Node.js**  
+
+### **Option 1: Using Node.js**
+- Install dependencies:  
+  ```bash
+  npm install express mongoose body-parser
+  ```
+- Create a simple Node.js server (`server.js`):  
+  ```javascript
+  const express = require('express');
+  const mongoose = require('mongoose');
+
+  const app = express();
+  app.use(express.json());
+
+  mongoose.connect('mongodb://localhost:27017/testdb', {
+      useNewUrlParser: true, 
+      useUnifiedTopology: true
+  }).then(() => console.log("Connected to MongoDB"));
+
+  const UserSchema = new mongoose.Schema({ name: String, age: Number });
+  const User = mongoose.model('User', UserSchema);
+
+  app.post('/add', async (req, res) => {
+      const newUser = new User(req.body);
+      await newUser.save();
+      res.send('User added');
+  });
+
+  app.listen(3000, () => console.log('Server running on port 3000'));
+  ```
+- Start the server:  
+  ```bash
+  node server.js
+  ```
+- Insert a document using **Postman or CURL**:  
+  ```bash
+  curl -X POST http://localhost:3000/add -H "Content-Type: application/json" -d '{"name": "John", "age": 25}'
+  ```
+
+---
+
+### **Option 2: Using Go**  
+- Install dependencies:  
+  ```bash
+  go get go.mongodb.org/mongo-driver/mongo
+  ```
+- Create a Go service (`main.go`):  
+  ```go
+  package main
+
+  import (
+      "context"
+      "fmt"
+      "log"
+      "net/http"
+      "encoding/json"
+
+      "go.mongodb.org/mongo-driver/bson"
+      "go.mongodb.org/mongo-driver/mongo"
+      "go.mongodb.org/mongo-driver/mongo/options"
+  )
+
+  type User struct {
+      Name string `json:"name"`
+      Age  int    `json:"age"`
+  }
+
+  var collection *mongo.Collection
+
+  func connectDB() {
+      clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
+      client, err := mongo.Connect(context.TODO(), clientOptions)
+      if err != nil {
+          log.Fatal(err)
+      }
+      collection = client.Database("testdb").Collection("users")
+  }
+
+  func addUser(w http.ResponseWriter, r *http.Request) {
+      var user User
+      json.NewDecoder(r.Body).Decode(&user)
+      _, err := collection.InsertOne(context.TODO(), bson.M{"name": user.Name, "age": user.Age})
+      if err != nil {
+          http.Error(w, err.Error(), http.StatusInternalServerError)
+          return
+      }
+      fmt.Fprintf(w, "User added")
+  }
+
+  func main() {
+      connectDB()
+      http.HandleFunc("/add", addUser)
+      log.Println("Server running on port 8080")
+      http.ListenAndServe(":8080", nil)
+  }
+  ```
+- Run the service:  
+  ```bash
+  go run main.go
+  ```
+- Insert a document using **Postman or CURL**:  
+  ```bash
+  curl -X POST http://localhost:8080/add -H "Content-Type: application/json" -d '{"name": "Alice", "age": 30}'
+  ```
+
+### **Expected Outcome:**  
+- MongoDB successfully installed and running locally.  
+- Node.js or Go service connects to MongoDB and inserts data.  
+- Verification of inserted documents in MongoDB.  
+
+---
+
+Let me know if you need any modifications! 🚀
